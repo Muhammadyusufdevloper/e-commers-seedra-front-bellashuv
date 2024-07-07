@@ -180,8 +180,6 @@
 // };
 
 // export default OurProducts;
-
-import "./OurProducts.scss";
 import { FaHeart, FaRegHeart, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import { Link, useSearchParams } from "react-router-dom";
@@ -228,42 +226,47 @@ const OurProducts = () => {
   };
 
   const products = productsData?.data?.products?.map((product, index) => (
-    <div key={index} className="products__card">
+    <div key={index} className="p-4 border rounded">
       <button
         onClick={() => dispatch(addWishlist(product))}
-        className="products__card__img-like"
+        className="absolute top-2 right-2 p-2 rounded-full bg-white border products__card__img-like"
       >
         {wishlistData.some((el) => el.id === product.id) ? (
-          <FaHeart color="crimson" />
+          <FaHeart className="text-crimson" />
         ) : (
           <FaRegHeart />
         )}
       </button>
-      <div onClick={() => openModal(product)} className="products__card__img">
-        <img src={product.urls[0] ? product.urls[0] : defaultImg} alt="" />
+      <div onClick={() => openModal(product)} className="h-80 cursor-pointer">
+        <img
+          src={product.urls[0] ? product.urls[0] : defaultImg}
+          alt=""
+          className="w-full h-full object-contain"
+        />
       </div>
-      <div className="products__card__info">
-        <div className="products__card__stars">
+      <div className="p-4">
+        <div className="flex items-center gap-2">
           {star.map((el, index) => (
-            <div key={index} className="products__card__stars-icon">
-              {el}
-            </div>
+            <div key={index}>{el}</div>
           ))}
           <p>(123)</p>
         </div>
-        <Link to={`single-rout/${product.id}`} className="products__card__text">
+        <Link
+          to={`single-rout/${product.id}`}
+          className="block mt-2 text-lg font-medium text-gray-800 hover:text-green-600"
+        >
           {product.title}
         </Link>
-        <div className="products__card__info__bottom">
-          <h3 className="products__card__title-price">${product.price}</h3>
+        <div className="flex justify-between items-center mt-2">
+          <h3 className="text-xl font-bold text-green-600">${product.price}</h3>
           <button
             onClick={() => {
               console.log("Adding to cart:", product);
               dispatch(add(product));
             }}
-            className="products__card__title-icon"
+            className="text-green-600"
           >
-            <FiShoppingCart />
+            <FiShoppingCart className="w-6 h-6" />
           </button>
         </div>
       </div>
@@ -271,25 +274,32 @@ const OurProducts = () => {
   ));
 
   const categories = categoryData?.data?.map((el) => (
-    <li key={el.id} className="products__category__item">
+    <li
+      key={el.id}
+      className="p-2 border rounded cursor-pointer hover:bg-green-600 hover:text-white"
+    >
       {el.name}
     </li>
   ));
 
   return (
     <div className="products container">
-      <div className="products__top__info">
-        <h2>Our products.</h2>
-        <button>View all (12)</button>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-3xl font-semibold">Our products.</h2>
+        <button className="px-4 py-2 rounded border border-green-600 text-green-600 hover:bg-green-600 hover:text-white">
+          View all (12)
+        </button>
       </div>
-      <ul className="products__category">
-        <li className="products__category__item">All</li>
+      <ul className="flex gap-4 overflow-x-scroll pb-4">
+        <li className="p-2 border rounded cursor-pointer hover:bg-green-600 hover:text-white">
+          All
+        </li>
         {categories}
       </ul>
-      <div className="products__cards">{products}</div>
-      {modal && (
-        <Modal productId={modal} onClose={closeModal} />
-      )}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {products}
+      </div>
+      {modal && <Modal productId={modal} onClose={closeModal} />}
     </div>
   );
 };
