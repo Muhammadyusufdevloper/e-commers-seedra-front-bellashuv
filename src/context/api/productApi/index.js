@@ -4,7 +4,20 @@ export const productApi = api.injectEndpoints({
   endpoints: (build) => ({
     getProducts: build.query({
       query: (params) => ({
-        url: "/products/search",
+        url: "/products",
+        params,
+      }),
+      providesTags: ["Product"],
+    }),
+    getProductsBySearch: build.query({
+      query: (search) => ({
+        url: `/products/search?q=${search}`,
+      }),
+      providesTags: ["Product"],
+    }),
+    getProductsByCategory: build.query({
+      query: (category, params) => ({
+        url: `/products/category/${category}`,
         params,
       }),
       providesTags: ["Product"],
@@ -19,9 +32,9 @@ export const productApi = api.injectEndpoints({
       query: (body) => ({
         url: "/products/create",
         method: "POST",
-        body
+        body,
       }),
-      invalidatesTags: ["Product"]
+      invalidatesTags: ["Product"],
     }),
   }),
 });
@@ -30,6 +43,8 @@ export const {
   useGetProductsQuery,
   useGetProductIdQuery,
   useCreateProductMutation,
+  useGetProductsByCategoryQuery,
+  useGetProductsBySearchQuery,
 } = productApi;
 // endpoints: (build) => ({
 //   getProducts: build.query({

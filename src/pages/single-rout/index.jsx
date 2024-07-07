@@ -18,24 +18,20 @@ import { useEffect } from "react";
 const SingleRout = () => {
   const { id } = useParams();
   const { data } = useGetProductIdQuery(id);
-  console.log(id);
   console.log(data);
+
   useEffect(() => {
     scroll(0, 0);
-  }, []);
+  }, [id]);
   return (
-    <div className="container py-10">
+    <div className="container mx-auto px-4ner py-10">
       <div className="single grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="single__imgs">
-          <img
-            src={data?.data?.urls[0]}
-            alt=""
-            className="w-full object-cover"
-          />
+          <img src={data?.images[0]} alt="" className="w-full object-cover" />
         </div>
         <div className="single__info space-y-4">
           <h3 className="single__title text-2xl font-semibold text-gray-900">
-            {data?.data?.title}
+            {data?.title}
           </h3>
           <div className="single__category__btns flex items-center flex-wrap gap-5 py-5">
             <button className="single__category__btn flex items-center gap-2 text-green-500 bg-green-200/30 border border-green-200/30 rounded-full py-2 px-4">
@@ -73,7 +69,7 @@ const SingleRout = () => {
                     start from
                   </span>
                   <h4 className="text-lg font-bold text-gray-900">
-                    ${data?.data?.price * pack}
+                    ${data?.price * pack}
                   </h4>
                 </div>
               </div>
