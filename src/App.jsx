@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-
 import AboutSeedra from "./pages/about-seedra";
 import Contact from "./pages/contact";
 import Home from "./pages/home";
