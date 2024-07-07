@@ -193,10 +193,21 @@ import {
   useGetProductsQuery,
 } from "../../../../context/api/productApi";
 import { useState } from "react";
+import { Box, Pagination } from "@mui/material";
 
 const OurProducts = () => {
-  const { data: productsData } = useGetProductsQuery({ limit: 6 });
   const [category, setCategory] = useState("");
+  const [page, setPage] = useState(+sessionStorage.getItem("pageCount") || 1);
+  const [perPageCount, setPerPageCount] = useState(
+    +localStorage.getItem("selectPageCount") || 6
+  );
+
+  const { data: productsData } = useGetProductsQuery({
+    limit: perPageCount ,
+    skip: perPageCount * page,
+  });
+
+  const { data } = useGetProductsQuery();
   const { data: productsDataByCategory } =
     useGetProductsByCategoryQuery(category);
   let navigate = useNavigate();
@@ -204,7 +215,6 @@ const OurProducts = () => {
   let wishlistData = useSelector((state) => state.wishlistSlice.data) || [];
   const dispatch = useDispatch();
   const { data: categoryData } = useGetCategoryQuery();
-  console.log(productsData);
 
   const star = [
     <FaStar key={"1"} />,
@@ -217,6 +227,13 @@ const OurProducts = () => {
   const handleOpenSingle = (id) => {
     navigate(`single-rout/${id}`);
   };
+
+  const handleChange = (_, value) => {
+    setPage(value);
+    sessionStorage.setItem("pageCount", value);
+  };
+
+  const totalCount = Math.ceil((data?.total / perPageCount)-1) || 1;
 
   const products = productsData?.products?.map((product, index) => (
     <div key={index} className="p-4 border rounded">
@@ -340,12 +357,18 @@ const OurProducts = () => {
     <div className="products container mx-auto px-4">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-3xl font-semibold">Our products.</h2>
-        <button className="px-4 py-2 rounded border border-green-600 text-green-600 hover:bg-green-600 hover:text-white">
-          View all (12)
+        <button
+          onClick={() => setPerPageCount(200)}
+          className="px-4 py-2 rounded border border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
+        >
+          View all ({data?.total})
         </button>
       </div>
       <ul className="flex gap-4 overflow-x-scroll pb-4">
-        <li onClick={()=>setCategory('')} className="p-2 border rounded cursor-pointer hover:bg-green-600 hover:text-white">
+        <li
+          onClick={() => setCategory("")}
+          className="p-2 border rounded cursor-pointer hover:bg-green-600 hover:text-white"
+        >
           All
         </li>
         {categories}
@@ -353,6 +376,14 @@ const OurProducts = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {category ? productsByCategory : products}
       </div>
+      <Box sx={{ display: "flex", justifyContent: "center" }} py={"20px"}>
+        <Pagination
+          onChange={handleChange}
+          count={totalCount}
+          color="primary"
+          page={page}
+        />
+      </Box>
     </div>
   );
 };
