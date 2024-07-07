@@ -1,44 +1,44 @@
 import hero from "../../assets/images/components/spinach/hero.png";
 import img from "../../assets/images/components/spinach/infoImg.png";
-
-import "./spinach.scss";
 import { SPINACH } from "../../static";
 import { useEffect } from "react";
 
 function Spinach() {
   const spinachData = SPINACH?.map((el) => (
-    <div
-      key={el.id}
-      style={{ backgroundColor: el.bg }}
-      className="spinach__hero__card"
-    >
-      <div className="spinach__hero__card__info">
-        <span>{el.time}</span>
-        <h3>{el.title}</h3>
-        <p>{el.text}</p>
-        <button>Read</button>
+    <div key={el.id} style={{ backgroundColor: el.bg }} className="rounded-lg">
+      <div className="p-2.5">
+        <span className="text-sm text-gray-500">{el.time}</span>
+        <h3 className="text-xl font-semibold text-gray-900">{el.title}</h3>
+        <p className="text-sm text-gray-500">{el.text}</p>
+        <button className="px-5 py-2.5 bg-white text-green-600 border-transparent rounded">
+          Read
+        </button>
       </div>
-      <div className="spinach__hero__card__img">
-        <img src={el.img} alt="" />
+      <div>
+        <img src={el.img} alt="" className="w-full" />
       </div>
     </div>
   ));
-  useEffect(()=>{
-    scroll(0,0)
-  },[])
+
+  useEffect(() => {
+    scroll(0, 0);
+  }, []);
+
   return (
-    <section className="spinach container">
-      <div className="spinach__hero">
-        <div className="spinach__hero__left">
-          <h1> How to plant spinach correctly in winter</h1>
+    <section className="container mt-10">
+      <div className="flex items-center justify-between bg-gray-200 rounded-lg p-5 flex-col sm:flex-row">
+        <div className="w-full sm:w-1/2 text-center sm:text-left">
+          <h1 className="font-lexend text-4xl sm:text-3xl md:text-2xl lg:text-xl font-semibold text-gray-900">
+            How to plant spinach correctly in winter
+          </h1>
         </div>
-        <div className="spinach__hero__right">
-          <img src={hero} alt="" />
+        <div className="w-full sm:w-1/2">
+          <img src={hero} alt="" className="w-full" />
         </div>
       </div>
-      <div className="spinach__hero__info">
-        <div className="spinach__hero__info__left">
-          <p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 py-7">
+        <div>
+          <p className="font-lexend text-lg font-light text-gray-900">
             Spinach is a cool-season plant that’s one of the first crops of
             spring and a great fall crop as well. You’ll enjoy growing this
             undemanding plant and will enjoy eating it even more. Harvest
@@ -49,15 +49,15 @@ function Spinach() {
             <br />
             <br />
             You can also download my How Do I Grow Spinach? one-sheet and keep
-            the free resource handy for your reference
+            the free resource handy for your reference.
           </p>
-
-          <div className="spinach__hero__img">
-            <img src={img} alt="" />
+          <div className="py-5">
+            <img src={img} alt="" className="w-full" />
           </div>
-
-          <h3>When, Where and How to Plant Spinach</h3>
-          <p>
+          <h3 className="font-lexend text-2xl font-semibold text-gray-900 py-2.5">
+            When, Where and How to Plant Spinach
+          </h3>
+          <p className="font-lexend text-lg font-light text-gray-900">
             Spinach can be either sown directly into the garden or started from
             seeds indoors. For the least work and the most convenience,
             seedlings can also be purchased from a nursery in spring. To give
@@ -94,17 +94,8 @@ function Spinach() {
             grass-like seedlings will emerge.
           </p>
         </div>
-        <div className="spinach__hero__info__right">{spinachData}</div>
+        <div className="flex flex-col gap-3.5">{spinachData}</div>
       </div>
-      {/* <div className="spinach__hero__bottom">
-        <div className="spinach__hero__bottom__info">
-          <p>Title was helpful?</p>
-          <h4>Share with friends</h4>
-        </div>
-        <div className="spinach__hero__bottom__icon">
-        
-        </div>
-      </div> */}
     </section>
   );
 }
