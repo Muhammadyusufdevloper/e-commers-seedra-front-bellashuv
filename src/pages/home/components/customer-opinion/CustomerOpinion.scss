@@ -1,0 +1,41 @@
+#clients {
+    padding: 80px 0;
+}
+
+.clients {
+    &__title {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 36px;
+    }
+    // &__cards {
+    // display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    // flex-direction: column;
+    // }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        border: 1px solid #efefef;
+        padding: 30px;
+        margin-bottom: 40px;
+        border-radius: 12px;
+        &__top {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        &__title {
+            font-size: 18px;
+        }
+        &__date {
+            font-size: 14px;
+        }
+        &__desc {
+            color: #1f2533;
+            font-size: 16px;
+        }
+    }
+}

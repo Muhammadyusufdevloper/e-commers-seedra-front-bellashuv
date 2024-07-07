@@ -1,0 +1,361 @@
+.our__blog {
+  button {
+    padding: 10px;
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+    color: green;
+    font-weight: 500;
+    font-size: 18px;
+    background: #fff;
+    transition: 0.4s;
+    &:hover {
+      background: green;
+      color: #fff;
+      border: 1.5px solid #fff;
+    }
+  }
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+  }
+  &__frames {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 50px;
+    p {
+      padding: 10px 0;
+    }
+    &__head {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding-bottom: 20px;
+    }
+    &__mint {
+      p {
+        padding: 10px 0;
+        width: 60%;
+        color: #70737c;
+      }
+      grid-column: span 8;
+      grid-row: span 8;
+      padding: 30px;
+      border-radius: 15px;
+    }
+    &__farmer {
+      border-radius: 15px;
+      padding: 30px;
+      grid-column: span 4;
+      grid-row: span 15;
+    }
+    &__strawberry_1 {
+      border-radius: 15px;
+      padding: 30px;
+      grid-column: span 4;
+      grid-row: span 7;
+    }
+    &__strawberry_2 {
+      padding: 30px;
+      border-radius: 15px;
+      grid-column: span 4;
+      grid-row: span 7;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .our__blog {
+    &__frames {
+      &__mint {
+        p {
+          padding: 10px 0;
+          width: 60%;
+          color: #70737c;
+        }
+
+        grid-column: span 8;
+        grid-row: span 6;
+        padding: 20px;
+        border-radius: 15px;
+      }
+
+      &__farmer {
+        border-radius: 15px;
+        padding: 20px;
+        grid-column: span 4;
+        grid-row: span 12;
+      }
+
+      &__strawberry_1 {
+        border-radius: 15px;
+        padding: 20px;
+        grid-column: span 4;
+        grid-row: span 6;
+      }
+
+      &__strawberry_2 {
+        padding: 20px;
+        border-radius: 15px;
+        grid-column: span 4;
+        grid-row: span 6;
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .our__blog {
+    &__frames {
+      h3 {
+        font-size: 18px;
+      }
+      &__mint {
+        p {
+          padding: 10px 0;
+          width: 60%;
+          color: #70737c;
+          font-size: 14px;
+        }
+
+        grid-column: span 8;
+        grid-row: span 4;
+        padding: 10px;
+        border-radius: 15px;
+      }
+
+      &__farmer {
+        border-radius: 15px;
+        padding: 10px;
+        grid-column: span 4;
+        grid-row: span 8;
+      }
+
+      &__strawberry_1 {
+        border-radius: 15px;
+        padding: 10px;
+        grid-column: span 4;
+        grid-row: span 4;
+      }
+
+      &__strawberry_2 {
+        padding: 10px;
+        border-radius: 15px;
+        grid-column: span 4;
+        grid-row: span 4;
+      }
+    }
+  }
+}
+@media (max-width: 870px) {
+  .our__blog {
+    &__frames {
+      &__mint {
+        grid-column: span 12;
+        grid-row: span 4;
+        padding: 10px;
+        border-radius: 15px;
+      }
+
+      &__farmer {
+        border-radius: 15px;
+        padding: 10px;
+        grid-column: span 6;
+        grid-row: span 8;
+      }
+
+      &__strawberry_1 {
+        border-radius: 15px;
+        padding: 10px;
+        grid-column: span 6;
+        grid-row: span 4;
+      }
+
+      &__strawberry_2 {
+        padding: 10px;
+        border-radius: 15px;
+        grid-column: span 6;
+        grid-row: span 4;
+      }
+    }
+  }
+}
+@media (max-width: 650px) {
+  .our__blog {
+    &__frames {
+      width: 90%;
+      &__mint {
+        grid-column: span 12;
+        grid-row: span 4;
+        padding: 10px;
+        border-radius: 15px;
+      }
+
+      &__farmer {
+        border-radius: 15px;
+        padding: 10px;
+        grid-column: span 12;
+        grid-row: span 4;
+        background: red;
+      }
+
+      &__strawberry_1 {
+        border-radius: 15px;
+        padding: 10px;
+        grid-column: span 6;
+        grid-row: span 4;
+      }
+
+      &__strawberry_2 {
+        padding: 10px;
+        border-radius: 15px;
+        grid-column: span 6;
+        grid-row: span 4;
+      }
+    }
+  }
+}
+@media (max-width: 610px) {
+  .our__blog {
+    &__frames {
+      width: 70%;
+
+      &__mint {
+        grid-column: span 12;
+        grid-row: span 4;
+        padding: 10px;
+        border-radius: 15px;
+      }
+
+      &__farmer {
+        border-radius: 15px;
+        padding: 10px;
+        grid-column: span 12;
+        grid-row: span 4;
+        background: red;
+      }
+
+      &__strawberry_1 {
+        border-radius: 15px;
+        padding: 10px;
+        grid-column: span 12;
+        grid-row: span 4;
+      }
+
+      &__strawberry_2 {
+        padding: 10px;
+        border-radius: 15px;
+        grid-column: span 12;
+        grid-row: span 4;
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .our__blog {
+    &__frames {
+      margin: 0 20px;
+      &__mint {
+        grid-column: span 10;
+        grid-row: span 4;
+        padding: 10px;
+        border-radius: 15px;
+      }
+
+      &__farmer {
+        border-radius: 15px;
+        padding: 10px;
+        grid-column: span 10;
+        grid-row: span 4;
+        background: red;
+      }
+
+      &__strawberry_1 {
+        border-radius: 15px;
+        padding: 10px;
+        grid-column: span 10;
+        grid-row: span 4;
+      }
+
+      &__strawberry_2 {
+        padding: 10px;
+        border-radius: 15px;
+        grid-column: span 10;
+        grid-row: span 4;
+      }
+    }
+  }
+}
+@media (max-width: 550px) {
+  .our__blog {
+    &__frames {
+      margin: 0 20px;
+
+      &__mint {
+        grid-column: span 8;
+        grid-row: span 4;
+        padding: 10px;
+        border-radius: 15px;
+      }
+
+      &__farmer {
+        border-radius: 15px;
+        padding: 10px;
+        grid-column: span 8;
+        grid-row: span 4;
+        background: red;
+      }
+
+      &__strawberry_1 {
+        border-radius: 15px;
+        padding: 10px;
+        grid-column: span 8;
+        grid-row: span 4;
+      }
+
+      &__strawberry_2 {
+        padding: 10px;
+        border-radius: 15px;
+        grid-column: span 8;
+        grid-row: span 4;
+      }
+    }
+  }
+}
+@media (max-width: 450px) {
+  .our__blog {
+    &__frames {
+      margin: 0 20px;
+      grid-template-columns: repeat(6, 1fr);
+
+      &__mint {
+        grid-column: span 6;
+        grid-row: span 4;
+        padding: 10px;
+        border-radius: 15px;
+      }
+
+      &__farmer {
+        border-radius: 15px;
+        padding: 10px;
+        grid-column: span 6;
+        grid-row: span 4;
+        background: red;
+      }
+
+      &__strawberry_1 {
+        border-radius: 15px;
+        padding: 10px;
+        grid-column: span 6;
+        grid-row: span 4;
+      }
+
+      &__strawberry_2 {
+        padding: 10px;
+        border-radius: 15px;
+        grid-column: span 6;
+        grid-row: span 4;
+      }
+    }
+  }
+}

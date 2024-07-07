@@ -1,0 +1,23 @@
+.carts {
+    padding: 20px 0;
+    height: calc(100vh - 220px);
+    &__empty__img {
+        margin: 0 auto;
+        width: 70%;
+        height: 500px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &__empty__title {
+        padding: 20px 0;
+        text-align: center;
+        font-size: 24px;
+        color: green;
+        font-weight: 800;
+    }
+}

@@ -1,0 +1,304 @@
+.cart {
+    padding: 20px 0;
+    min-height:calc(100vh - 220px) ;
+    &__logOut {
+        margin: 20px 0;
+        padding: 10px 20px;
+        border: 1px solid #ddd;
+        background: transparent;
+        color: #70737C;
+        border-radius: 5px;
+    }
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 20px;
+    }
+
+    &__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h3 {
+            font-size: 36px;
+            font-weight: 600;
+            line-height: 54px;
+            letter-spacing: -0.05em;
+            color: #1F2533;
+        }
+
+        h4 {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 31.5px;
+            letter-spacing: -0.02em;
+            color: #70737C;
+        }
+    }
+
+    &__top__cards,
+    &__top__right {
+        padding: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        flex-wrap: wrap;
+
+        h3 {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 24.95px;
+            color: #70737C;
+        }
+    }
+
+    &__top__right {
+        gap: 25px;
+    }
+
+    &__cards {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    &__card {
+        display: grid;
+        grid-template-columns: 9fr 1fr 1fr 1fr;
+        align-items: center;
+        gap: 20px;
+        padding: 15px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+    }
+
+    &__infos {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    &__img {
+        position: relative;
+
+        img {
+            width: 65px;
+            height: 65px;
+        }
+    }
+
+    &__remove__btn {
+        position: absolute;
+        top: -7px;
+        left: -7px;
+        color: red;
+        background: transparent;
+        border: none;
+        font-size: 34px;
+    }
+
+    &__count,
+    &__prices,
+    &__total__prices {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    &__count__title {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24.95px;
+        color: #70737C;
+    }
+
+    &__counts__btn {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 5px 8px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+
+        button {
+            padding: 10px;
+            background: transparent;
+            border: none;
+            font-size: 16px;
+            color: #359740;
+        }
+
+        span {
+            border-radius: 5px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: #35974014;
+            color: #359740;
+            font-size: 18px;
+        }
+    }
+
+    &__right {
+        margin-top: 20px;
+        border-radius: 8px;
+        padding: 40px;
+        border: 1px solid #ddd;
+        max-height: 500px;
+        h4 {
+            color: #70737C;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 24.95px;
+            text-align: left;
+        }
+
+        select {
+            margin: 20px 0;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 18px;
+            outline: none;
+            width: 100%;
+        }
+
+        form {
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            input {
+                padding: 10px 20px;
+                border: 1px solid #ddd;
+                outline: none;
+                font-size: 16px;
+            }
+        }
+    }
+
+    &__total__amount {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    &__amount__btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        border: 1px solid #359740;
+        border-radius: 8px;
+        background: #359740;
+        color: white;
+    }
+
+    &__price__info {
+        color: #1F2533;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 28px;
+        letter-spacing: -0.02em;
+        text-align: left;
+    }
+
+    @media (max-width:1100px) {
+        &__wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+    }
+
+    @media (max-width:750px) {
+        &__top {
+            padding: 20px 0;
+
+            h3 {
+                font-size: 20px;
+                line-height: 20px;
+            }
+
+            h4 {
+                font-size: 16px;
+                line-height: 20px;
+            }
+        }
+    }
+
+    @media (max-width:750px) {
+        &__top__right {
+            display: none;
+        }
+
+        &__card {
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        &__infos {
+            width: 100%;
+        }
+
+        &__count__title {
+            display: block;
+        }
+
+        &__count,
+        &__prices,
+        &__total__prices {
+            width: 100%;
+        }
+
+        &__counts__btn {
+            gap: 8px;
+            padding: 5px;
+
+
+            button {
+                padding: 5px;
+                font-size: 14px;
+            }
+
+            span {
+                border-radius: 5px;
+
+                font-size: 14px;
+            }
+        }
+    }
+
+    @media (max-width:400px) {
+        &__infos {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &__right {
+            max-width: 300px;
+        }
+    }
+
+    @media (max-width:350px) {
+
+
+        &__right {
+            max-width: 250px;
+        }
+    }
+
+}

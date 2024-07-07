@@ -1,0 +1,99 @@
+.product {
+  padding: 50px 0;
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+
+  &__card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 8px;
+
+    &__img {
+      height: 220px;
+      background-color: #ddd;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__info {
+      // padding: 10px 8px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #7e7e7e;
+    }
+
+    p {
+      color: #7e7e7e;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    &__like__btn {
+      background-color: transparent;
+      border: none;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
+@media (max-width: 750px) {
+  .product {
+    &__cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .product {
+    &__cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5px;
+    }
+  }
+}
+@media (max-width: 450px) {
+  .product {
+    &__cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+}
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+  font-size: 50px;
+  font-weight: 700;
+  color: #7e7e7e;
+}
