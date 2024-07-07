@@ -10,6 +10,8 @@ const CartWrapper = ({ data }) => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
+  console.log(data);
+
   useEffect(() => {
     const total = data.reduce((acc, el) => acc + el.price * el.amount, 0);
     setSum(Math.ceil(total));
@@ -35,7 +37,7 @@ const CartWrapper = ({ data }) => {
     <div className="grid grid-cols-[9fr_1fr_1fr_1fr] items-center gap-5 p-4 border rounded-sm" key={el.id}>
       <div className="flex items-center gap-4">
         <div className="relative">
-          <img src={el.urls} alt="" className="w-16 h-16" />
+          <img src={el.thumbnail} alt="" className="w-16 h-16" />
           <button
             onClick={() => dispatch(remove(el))}
             className="absolute top-[-7px] left-[-7px] text-red-500 text-2xl"
@@ -45,7 +47,7 @@ const CartWrapper = ({ data }) => {
         </div>
         <div>
           <h3>{el.title}</h3>
-          <p>{el.description}</p>
+          {/* <p>{el.description}</p> */}
         </div>
       </div>
       <div className="flex items-center gap-4">

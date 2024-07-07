@@ -32,8 +32,11 @@ const Blog = () => {
 
   return (
     <section className="blog">
-      <div className="blog__hero bg-cover bg-center bg-no-repeat h-96 flex items-center justify-center text-white">
-        <div className="container text-center">
+      <div
+        style={{ background: `url(../assets/components/blog/hero.png)` }}
+        className="blog__hero bg-cover bg-center bg-no-repeat h-96 flex items-center justify-center text-white"
+      >
+        <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl font-semibold">Welcome to our blog</h1>
           <p className="text-lg mt-4">
             Here you can find a lot of interesting and useful information that
@@ -43,7 +46,7 @@ const Blog = () => {
           </p>
         </div>
       </div>
-      <div className="container py-8">
+      <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
           <div className="blog__form-input w-full border rounded-full overflow-hidden">
             <input

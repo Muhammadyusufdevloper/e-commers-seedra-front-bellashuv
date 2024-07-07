@@ -7,7 +7,7 @@ const OurBlog = () => {
 
   return (
     <Fragment>
-      <div className="container">
+      <div className="container mx-auto px-4">
         <div className="our__blog">
           <div className="our__blog__info">
             <h2 className="text-3xl lg:text-4xl font-bold">Our blog.</h2>

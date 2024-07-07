@@ -8,7 +8,7 @@ const Cart = () => {
   const cartData = useSelector((state) => state.cart.value);
 
   useEffect(() => {
-    scroll(0, 0); // Assuming this is intended for scrolling to the top
+    scroll(0, 0);
   }, []);
 
   return (
