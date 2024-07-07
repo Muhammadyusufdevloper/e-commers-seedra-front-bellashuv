@@ -1,24 +1,3 @@
-/* globals.css */
-@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  * {
-    @apply m-0 p-0 box-border;
-    font-family: "Lexend", sans-serif;
-  }
-
-  a {
-    @apply text-inherit;
-  }
-
-  button {
-    @apply cursor-pointer;
-  }
-
-  .container {
-    @apply w-container max-w-maxContainer mx-auto px-4;
-  }
-}
