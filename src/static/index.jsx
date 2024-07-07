@@ -14,64 +14,7 @@ import read1 from "../assets/images/components/blog/img3.png";
 import read2 from "../assets/images/components/blog/img4.png";
 import read3 from "../assets/images/components/blog/img5.png";
 
-interface Product {
-  id: number;
-  title: string;
-  price: string;
-  oldPrice: string;
-  category: string;
-  units: string;
-  description: string;
-  urls: string;
-  info: string;
-  available: boolean;
-  CreatedAt: string;
-  UpdatedAt: string;
-}
-
-interface BlogData {
-  id: number;
-  data: string;
-  className: string;
-  dataClock: string;
-  title: string;
-  desc: string;
-  bg: string;
-}
-
-interface CustomerOpinion {
-  id: number;
-  image: string;
-  title: string;
-  date: string;
-  desc: string;
-}
-
-interface TeamMember {
-  id: number;
-  name: string;
-  profession: string;
-  img: string;
-}
-
-interface BlogRead {
-  id: number;
-  title: string;
-  text: string;
-  time: string;
-  img: string;
-}
-
-interface Spinach {
-  id: number;
-  title: string;
-  text: string;
-  time: string;
-  img: string;
-  bg: string;
-}
-
-export const PRODUCT: Product[] = [
+export const PRODUCT = [
   {
     id: 1,
     title: "Cillentro",
@@ -159,7 +102,7 @@ export const PRODUCT: Product[] = [
   },
 ];
 
-export const OurBlogDATA: BlogData[] = [
+export const OurBlogDATA = [
   {
     id: 1,
     data: "12.09.2021",
@@ -184,7 +127,6 @@ export const OurBlogDATA: BlogData[] = [
     dataClock: BlogClock,
     className: "our__blog__frames__strawberry_1",
     title: "How to plant spinach correctly in winter",
-    desc: "In most areas, successive sowing can be done from early spring until early winter, but more often during hotter months...",
     bg: BlogImg3,
   },
   {
@@ -193,12 +135,11 @@ export const OurBlogDATA: BlogData[] = [
     className: "our__blog__frames__strawberry_2",
     dataClock: BlogClock,
     title: "How to plant spinach correctly in winter",
-    desc: "In most areas, successive sowing can be done from early spring until early winter, but more often during hotter months...",
     bg: BlogImg3,
   },
 ];
 
-export const CUSTOMEROPINION: CustomerOpinion[] = [
+export const CUSTOMEROPINION = [
   {
     id: 1,
     image: swiper,
@@ -236,7 +177,7 @@ export const CUSTOMEROPINION: CustomerOpinion[] = [
   },
 ];
 
-export const OURTEAMDATA: TeamMember[] = [
+export const OURTEAMDATA = [
   {
     id: 1,
     name: "Leslie Alexander",
@@ -250,20 +191,20 @@ export const OURTEAMDATA: TeamMember[] = [
     img: OurTeam2,
   },
   {
-    id: 3,
+    id: 1,
     name: "Floyd Miles",
     profession: "Web Designer",
     img: OurTeam3,
   },
   {
-    id: 4,
+    id: 1,
     name: "Wade Warren",
-    profession: "Medical Assistant",
+    profession: " Medical Assistant",
     img: OurTeam4,
   },
 ];
 
-export const BLOGREAD: BlogRead[] = [
+export const BLOGREAD = [
   {
     id: 1,
     title: "How to plant spinach correctly in winter",
@@ -287,7 +228,7 @@ export const BLOGREAD: BlogRead[] = [
   },
 ];
 
-export const SPINACH: Spinach[] = [
+export const SPINACH = [
   {
     id: 1,
     title: "How to plant spinach correctly in winter",

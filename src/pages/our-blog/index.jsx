@@ -1,4 +1,4 @@
-import OurBlog from "../home/components/our-blog/index";
+import OurBlog from "../../pages/home/components/our-blog/index";
 import "./ourBlog.scss";
 import img from "../../assets/images/components/blog/img1.png";
 import { BLOGREAD } from "../../static";
