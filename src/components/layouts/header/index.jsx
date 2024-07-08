@@ -10,6 +10,7 @@ import { memo, useState } from "react";
 import { useSelector } from "react-redux";
 import { CiSearch } from "react-icons/ci";
 import SearchModule from "./components/search/SearchModule";
+import HeaderCart from "./components/cart/HeaderCart";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -136,14 +137,22 @@ const Header = () => {
                   </sup>
                 )}
               </Link>
-              <Link to="/cart" className="relative">
-                <MdOutlineShoppingCart className="text-green-600" />
-                {cartData.length > 0 && (
-                  <sup className="absolute top-0 right-0 text-xs text-green-600">
-                    {cartData.length}
-                  </sup>
-                )}
-              </Link>
+              <div
+                onMouseEnter={() => setShowCart(true)}
+                onMouseLeave={() => setShowCart(false)}
+                className="relative"
+              >
+                {showCart ? <HeaderCart setShowCart={setShowCart} /> : <></>}
+
+                <Link to="/cart" className="relative">
+                  <MdOutlineShoppingCart className="text-green-600" />
+                  {cartData.length > 0 && (
+                    <sup className="absolute top-[-5px] right-[-5px] text-xs text-green-600">
+                      {cartData.length}
+                    </sup>
+                  )}
+                </Link>
+              </div>
             </div>
             <button
               onClick={() => setMenu(true)}
