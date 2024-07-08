@@ -10,7 +10,7 @@ function Chekout() {
   const [info, setInfo] = useState(false);
 
   return (
-    <section className="chekout container mx-auto">
+    <section className="chekout w-full max-w-[1142px] px-4 mx-auto">
       <div className={`chekout__left ${info ? "" : "chekout__left__show"}`}>
         <NavLink to={"/cart"} className="chekout__left__title flex items-center text-3xl font-semibold text-gray-800 py-4">
           <FiArrowLeft className="mr-2" />

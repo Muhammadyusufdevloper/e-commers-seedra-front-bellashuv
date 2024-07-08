@@ -12,7 +12,7 @@ const Cart = () => {
   }, []);
 
   return (
-    <div className="carts container mx-auto py-5">
+    <div className="carts w-full max-w-[1142px] px-4 mx-auto py-5">
       {cartData.length ? (
         <CartWrapper data={cartData} />
       ) : (

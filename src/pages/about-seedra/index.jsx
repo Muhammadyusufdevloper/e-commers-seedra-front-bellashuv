@@ -10,7 +10,7 @@ const AboutSeedra = () => {
 
   return (
     <Fragment>
-      <div className="container mx-auto">
+      <div className="w-full max-w-[1142px] px-4 mx-auto">
         <div className="about__seedra__hero bg-cover bg-center bg-no-repeat h-96 md:h-80 lg:h-72 xl:h-60 flex flex-col items-center justify-center text-center rounded-lg my-10 px-6 md:px-10 lg:px-14 xl:px-20">
           <h2 className="text-4xl md:text-3xl lg:text-2xl xl:text-xl font-semibold mb-6 md:mb-4 lg:mb-3 xl:mb-2">
             Who we are and what we do

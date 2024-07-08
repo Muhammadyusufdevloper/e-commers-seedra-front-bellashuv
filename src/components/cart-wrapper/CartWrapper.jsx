@@ -76,7 +76,7 @@ const CartWrapper = ({ data }) => {
   ));
 
   return (
-    <div className="container py-5 min-h-[calc(100vh-220px)]">
+    <div className="w-full max-w-[1142px] px-4 mx-auto py-5 min-h-[calc(100vh-220px)]">
       <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-5">
         <div>
           <div className="flex justify-between items-center">

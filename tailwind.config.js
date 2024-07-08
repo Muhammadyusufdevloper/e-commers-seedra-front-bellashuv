@@ -13,6 +13,9 @@ export default {
         container: '100%',
         maxContainer: '1142px',
       },
+      backgroundImage: {
+        'hero': "url('/assets/images/page/home/hero.svg')",
+      },
     },
   },
   plugins: [],

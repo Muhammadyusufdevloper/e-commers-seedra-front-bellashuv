@@ -229,32 +229,14 @@ const AllProduct = () => {
       key={el.id}
       onClick={() => setCategory(el.slug)}
       className={`all-products__category__item cursor-pointer py-2 px-4 rounded-lg border transition duration-300 bg-green-600 text-white border-transparent text-nowrap`}
-      // onClick={() => handleCategoryClick(el)}
+    // onClick={() => handleCategoryClick(el)}
     >
       {el.name}
     </li>
   ));
 
   return (
-    <div className="all-products container mx-auto mt-6">
-      <form className="flex justify-between items-center mb-8 gap-5">
-        <div className="blog__form-input w-full border rounded-full overflow-hidden">
-          <input
-            onChange={(e) => setSearch(e.target.value)}
-            value={search}
-            type="text"
-            placeholder="Search..."
-            className="w-full px-4 py-2 outline-none"
-          />
-        </div>
-        <select
-          onChange={(e) => setSort(e.target.value)}
-          className="px-4 py-2 border rounded-full outline-none"
-        >
-          <option value="asc">Sort by asc </option>
-          <option value="desc">Sort by desc</option>
-        </select>
-      </form>
+    <div className="all-products container mx-auto">
       <div className="all-products__top__info flex items-center justify-between mb-6">
         <h2 className="text-3xl font-semibold">All products.</h2>
         <button
@@ -268,6 +250,7 @@ const AllProduct = () => {
         <li
           onClick={() => setCategory("")}
           className={`all-products__category__item cursor-pointer py-2 px-4 rounded-lg border transition duration-300 ${"bg-green-600 text-white border-transparent"}`}
+          // onClick={() => handleCategoryClick(null)}
         >
           All
         </li>

@@ -27,7 +27,7 @@ const Header = () => {
   return (
     <>
       <header className="sticky top-0 left-0 bg-white shadow-md z-50 py-3">
-        <nav className="container mx-auto flex items-center justify-between">
+        <nav className="w-full max-w-[1142px] px-4 mx-auto flex items-center justify-between">
           <Link to="/" className="w-32">
             <img src={siteLogo} alt="site logo" />
           </Link>
@@ -38,9 +38,8 @@ const Header = () => {
             ></div>
           )}
           <ul
-            className={`fixed top-0 right-0 bg-white shadow-md h-full z-50 w-64 transform transition-transform duration-300 ${
-              menu ? "translate-x-0" : "translate-x-full"
-            } lg:static lg:flex lg:flex-row lg:w-auto lg:h-auto lg:bg-transparent lg:shadow-none lg:translate-x-0`}
+            className={`fixed top-0 right-0 bg-white shadow-md h-full z-50 w-64 transform transition-transform duration-300 ${menu ? "translate-x-0" : "translate-x-full"
+              } lg:static lg:flex lg:flex-row lg:w-auto lg:h-auto lg:bg-transparent lg:shadow-none lg:translate-x-0`}
           >
             <li className="absolute top-2 right-2 lg:hidden">
               <button
@@ -52,11 +51,10 @@ const Header = () => {
             </li>
             <div className="block lg:hidden p-4">
               <form
-                className={`relative flex items-center border border-gray-300 rounded-full overflow-hidden transition-all duration-500 ${
-                  menu
-                    ? "fixed top-0 left-1/4 transform translate-y-20"
-                    : "max-w-xs"
-                }`}
+                className={`relative flex items-center border border-gray-300 rounded-full overflow-hidden transition-all duration-500 ${menu
+                  ? "fixed top-0 left-1/4 transform translate-y-20"
+                  : "max-w-xs"
+                  }`}
               >
                 <button type="button" className="p-2">
                   <CiSearch className="text-xl" />
@@ -133,11 +131,10 @@ const Header = () => {
             </div>
             <div className="hidden lg:block">
               <form
-                className={`relative flex items-center border border-gray-300 rounded-full overflow-hidden transition-all duration-500 ${
-                  menu
-                    ? "fixed top-0 left-1/4 transform translate-y-20"
-                    : "max-w-xs"
-                }`}
+                className={`relative flex items-center border border-gray-300 rounded-full overflow-hidden transition-all duration-500 ${menu
+                  ? "fixed top-0 left-1/4 transform translate-y-20"
+                  : "max-w-xs"
+                  }`}
               >
                 <button type="button" className="p-2">
                   <CiSearch className="text-xl" />

@@ -24,7 +24,7 @@ const SingleRout = () => {
     scroll(0, 0);
   }, [id]);
   return (
-    <div className="container mx-auto px-4ner py-10">
+    <div className="w-full max-w-[1142px] px-4 mx-auto px-4ner py-10">
       <div className="single grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="single__imgs">
           <img src={data?.images[0]} alt="" className="w-full object-cover" />

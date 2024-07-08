@@ -359,7 +359,7 @@ const OurProducts = () => {
   ));
 
   return (
-    <div className="products container mx-auto px-4">
+    <div className="products w-full max-w-[1142px] px-4 mx-auto px-4">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-3xl font-semibold">Our products.</h2>
         <button
@@ -369,11 +369,16 @@ const OurProducts = () => {
           View all ({data?.total})
         </button>
       </div>
+<<<<<<< HEAD
       <ul className="flex gap-4 overflow-x-scroll pb-4">
         <li
           onClick={() => setCategory("")}
           className="p-2 border rounded cursor-pointer hover:bg-green-600 hover:text-white"
         >
+=======
+      <ul className="flex gap-4 overflow-x-scroll pb-2 mb-4" style={{}}>
+        <li onClick={()=>setCategory('')} className="p-2 border rounded cursor-pointer hover:bg-green-600 hover:text-white">
+>>>>>>> 33a34b1e3d866aef18d6a7f3d3e31528adc6c78e
           All
         </li>
         {categories}

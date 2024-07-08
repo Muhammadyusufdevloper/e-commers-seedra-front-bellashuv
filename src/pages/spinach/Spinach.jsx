@@ -25,7 +25,7 @@ function Spinach() {
   }, []);
 
   return (
-    <section className="container mt-10">
+    <section className="w-full max-w-[1142px] px-4 mt-10">
       <div className="flex items-center justify-between bg-gray-200 rounded-lg p-5 flex-col sm:flex-row">
         <div className="w-full sm:w-1/2 text-center sm:text-left">
           <h1 className="font-lexend text-4xl sm:text-3xl md:text-2xl lg:text-xl font-semibold text-gray-900">
