@@ -18,7 +18,7 @@ const OurBlog = () => {
               Go to our blog
             </button>
           </div>
-          <div className="grid grid-cols-12 gap-8 lg:gap-12 mt-8">
+          <div className="grid grid-cols-1gap-8 lg:gap-12 mt-8">
             {OurBlogDATA?.map((el) => (
               <div
                 key={el?.id}

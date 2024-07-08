@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaHeart, FaRegHeart, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaHeart, FaRegHeart, FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +13,7 @@ import {
   useGetProductsQuery,
 } from "../../../../context/api/productApi";
 import { Box, Pagination } from "@mui/material";
+import { toast } from "react-toastify";
 
 const OurProducts = () => {
   const [category, setCategory] = useState("");
@@ -58,6 +59,19 @@ const OurProducts = () => {
     setPage(value);
     sessionStorage.setItem("pageCount", value);
   };
+  const getRating = (rating) => {
+    let res = [];
+    for (let i = 0; i < Math.trunc(rating); i++) {
+      res.push(<FaStar className="text-yellow-400" />);
+    }
+    if (rating % 1 > 0.4) {
+      res.push(<FaStarHalfAlt className="text-yellow-400" />);
+    }
+    for (let i = Math.round(rating); i < 5; i++) {
+      res.push(<FaRegStar className="text-yellow-400" />);
+    }
+    return res;
+  };
 
   const totalCount = Math.ceil(data?.total / perPageCount - 1) || 1;
 
@@ -85,10 +99,8 @@ const OurProducts = () => {
       </div>
       <div className="p-4">
         <div className="flex items-center gap-2">
-          {star.map((el, index) => (
-            <div key={index}>{el}</div>
-          ))}
-          <p>(123)</p>
+          {getRating(product.rating)}
+          <p className="text-gray-500">(123)</p>
         </div>
         <Link
           to={`single-rout/${product.id}`}
@@ -106,9 +118,11 @@ const OurProducts = () => {
             className="text-green-600"
           >
             {!cartData.some((el) => el.id === product.id) ? (
-              <FiShoppingCart className="w-6 h-6" />
+              <div className="rounded-lg w-12 h-12 flex items-center justify-center border border-[#EFEFEF]">
+                <FiShoppingCart className="w-6 h-6" />
+              </div>
             ) : (
-              <img width={40} height={40} src={galochka} alt="" />
+              <img width={48} height={48} src={galochka} alt="" />
             )}
           </button>
         </div>
@@ -121,10 +135,10 @@ const OurProducts = () => {
       <div key={index} className="relative p-4 border rounded">
         <button
           onClick={() => dispatch(addWishlist(product))}
-          className="absolute top-2 right-2 p-2 rounded-full bg-white border"
+          className="absolute top-2 right-2 p-2 rounded-full bg-white border border-[#FFCF55]"
         >
           {wishlistData.some((el) => el.id === product.id) ? (
-            <FaHeart className="text-red-500" />
+            <FaHeart className="text-[#FFCF55]" />
           ) : (
             <FaRegHeart />
           )}
@@ -158,15 +172,16 @@ const OurProducts = () => {
             </h3>
             <button
               onClick={() => {
-                
                 dispatch(add(product));
               }}
               className="text-green-600"
             >
               {!cartData.some((el) => el.id === product.id) ? (
-                <FiShoppingCart className="w-6 h-6" />
+                <div className="rounded-lg w-12 h-12 flex items-center justify-center border border-[#EFEFEF]">
+                  <FiShoppingCart className="w-6 h-6" />
+                </div>
               ) : (
-                <img width={40} height={40} src={galochka} alt="" />
+                <img width={48} height={48} src={galochka} alt="" />
               )}
             </button>
           </div>
@@ -179,7 +194,7 @@ const OurProducts = () => {
     <li
       key={el.slug}
       onClick={() => setCategory(el.slug)}
-      className="p-2 text-nowrap border rounded cursor-pointer hover:bg-green-600 hover:text-white"
+      className={`p-2 text-nowrap border transition duration-500 rounded cursor-pointer hover:bg-green-600 hover:text-white ${category === el.slug ? 'bg-green-600 text-white' : ''}`}
     >
       {el.name}
     </li>
@@ -196,10 +211,10 @@ const OurProducts = () => {
           View all ({data?.total})
         </button>
       </div>
-      <ul className="flex gap-4 overflow-x-scroll pb-4">
+      <ul className="flex gap-4 overflow-x-scroll pb-2 mb-4 product__list">
         <li
           onClick={() => setCategory("")}
-          className="p-2 border rounded cursor-pointer hover:bg-green-600 hover:text-white"
+          className={`p-2 border rounded transition duration-500 cursor-pointer hover:bg-green-600 hover:text-white ${category === "" ? 'bg-green-600 text-white' : ''}`}
         >
           All
         </li>

@@ -27,7 +27,7 @@ const AllProduct = () => {
   let [limit, setLimit] = useState(6);
   const cartData = useSelector((state) => state.cart.value);
 
-  
+
 
   const { data: productsData } = useGetProductsQuery({
     sortBy: "title",
@@ -50,13 +50,13 @@ const AllProduct = () => {
   const getRating = (rating) => {
     let res = [];
     for (let i = 0; i < Math.trunc(rating); i++) {
-      res.push(<FaStar />);
+      res.push(<FaStar className="text-yellow-400" />);
     }
     if (rating % 1 > 0.4) {
-      res.push(<FaStarHalfAlt />);
+      res.push(<FaStarHalfAlt className="text-yellow-400" />);
     }
     for (let i = Math.round(rating); i < 5; i++) {
-      res.push(<FaRegStar />);
+      res.push(<FaRegStar className="text-yellow-400" />);
     }
     return res;
   };
@@ -79,7 +79,7 @@ const AllProduct = () => {
         )}
       </button>
       <div
-        onClick={() => navigate(`single-route/${product.id}`)}
+        onClick={() => navigate(`/single-rout/${product.id}`)}
         className="all-products__card__img h-80 cursor-pointer"
       >
         <img
@@ -111,9 +111,11 @@ const AllProduct = () => {
             className="text-green-600"
           >
             {!cartData.some((el) => el.id === product.id) ? (
-              <FiShoppingCart className="w-6 h-6" />
+              <div className="rounded-lg w-12 h-12 flex items-center justify-center border border-[#EFEFEF]">
+                <FiShoppingCart className="w-6 h-6" />
+              </div>
             ) : (
-              <img width={40} height={40} src={galochka} alt="" />
+              <img width={48} height={48} src={galochka} alt="" />
             )}
           </button>
         </div>
@@ -281,7 +283,7 @@ const AllProduct = () => {
         <li
           onClick={() => setCategory("")}
           className={`all-products__category__item cursor-pointer py-2 px-4 rounded-lg border transition duration-300 ${"bg-green-600 text-white border-transparent"}`}
-          // onClick={() => handleCategoryClick(null)}
+        // onClick={() => handleCategoryClick(null)}
         >
           All
         </li>
@@ -291,8 +293,8 @@ const AllProduct = () => {
         {search
           ? productsBySearch
           : category
-          ? productsByCategoryData
-          : products}
+            ? productsByCategoryData
+            : products}
       </div>
     </div>
   );

@@ -133,7 +133,7 @@ const Header = () => {
               <Link to="/wishlist" className="relative">
                 <GoHeart className="text-green-600" />
                 {wishlistData.length > 0 && (
-                  <sup className="absolute top-0 right-0 text-xs text-green-600">
+                  <sup className="absolute top-[-10px] right-[-5px] text-xs text-green-600">
                     {wishlistData.length}
                   </sup>
                 )}
@@ -148,7 +148,7 @@ const Header = () => {
                 <Link to="/cart" className="relative">
                   <MdOutlineShoppingCart className="text-green-600" />
                   {cartData.length > 0 && (
-                    <sup className="absolute top-[-5px] right-[-5px] text-xs text-green-600">
+                    <sup className="absolute top-[-10px] right-[-5px]  text-xs text-green-600">
                       {cartData.length}
                     </sup>
                   )}
