@@ -2,6 +2,7 @@ import { Fragment, useState } from "react";
 
 import CallImg from "../../assets/images/page/note-found/phone.png";
 import EmailImg from "../../assets/images/page/note-found/email.png";
+import hero from "../../assets/images/components/blog/hero.png";
 
 const BOT_TOKEN = "7321708093:AAFU3ALIU-JCCRSZT9of-ygLdd9MAD1MQQs";
 const CHAT_ID = "-4263039203";
@@ -30,7 +31,10 @@ const Contact = () => {
 
   return (
     <Fragment>
-      <div className="contact w-full max-w-[1142px] px-4 mx-auto mt-32 flex justify-between p-10 bg-cover bg-center rounded-lg pt-10 min-h-screen-60">
+      <div
+        style={{ backgroundImage: `url(${hero})` }}
+        className="contact w-full max-w-[1142px] px-4 mx-auto mt-20 flex justify-between p-10 bg-cover bg-center bg-no-repeat rounded-lg pt-10 min-h-screen-60"
+      >
         <div className="contact__info w-1/2 flex flex-col justify-between p-8">
           <div className="contact__info__top">
             <h2 className="text-4xl">Contact us</h2>
@@ -53,7 +57,9 @@ const Contact = () => {
         <div className="contact__form w-1/2 p-5 mx-10 bg-white rounded-lg">
           <form onSubmit={handleSubmit}>
             <div className="contact__form__input flex flex-col gap-2">
-              <label htmlFor="name" className="text-gray-700">Name</label>
+              <label htmlFor="name" className="text-gray-700">
+                Name
+              </label>
               <input
                 type="text"
                 required
@@ -66,7 +72,9 @@ const Contact = () => {
               />
             </div>
             <div className="contact__form__input flex flex-col gap-2">
-              <label htmlFor="email" className="text-gray-700">E-mail</label>
+              <label htmlFor="email" className="text-gray-700">
+                E-mail
+              </label>
               <input
                 type="text"
                 required
@@ -79,7 +87,9 @@ const Contact = () => {
               />
             </div>
             <div className="contact__form__input flex flex-col gap-2">
-              <label htmlFor="message" className="text-gray-700">Message</label>
+              <label htmlFor="message" className="text-gray-700">
+                Message
+              </label>
               <textarea
                 required
                 value={userOpinion}
@@ -92,10 +102,12 @@ const Contact = () => {
               ></textarea>
             </div>
             <div className="contact__form__button flex justify-between items-center gap-8 mt-4">
-              <button className="w-32 px-4 py-2 text-white bg-green-500 border-2 border-green-500 rounded-lg transition duration-400 hover:text-green-500 hover:bg-white">
+              <button className="w-32 px-4 py-2 text-white bg-green-500 border-2 border-green-500 text-nowrap rounded-lg transition duration-400 hover:text-green-500 hover:bg-white">
                 Send request
               </button>
-              <p className="text-gray-700">By sending request you agree to our Privacy & Policy</p>
+              <p className="text-gray-700">
+                By sending request you agree to out Pivacy & Policy
+              </p>
             </div>
           </form>
         </div>

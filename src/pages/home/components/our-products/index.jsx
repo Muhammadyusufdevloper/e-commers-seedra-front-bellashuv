@@ -23,6 +23,8 @@ const OurProducts = () => {
   );
   const { data } = useGetProductsQuery();
   const cartData = useSelector((state) => state.cart.value);
+  let wishlistData = useSelector((state) => state.wishlistSlice.data) || [];
+  const dispatch = useDispatch();
 
   const { data: productsData } = useGetProductsQuery({
     limit: perPageCount,
@@ -38,8 +40,7 @@ const OurProducts = () => {
     useGetProductsByCategoryQuery(category);
   let navigate = useNavigate();
 
-  let wishlistData = useSelector((state) => state.wishlistSlice.data) || [];
-  const dispatch = useDispatch();
+  
   const { data: categoryData } = useGetCategoryQuery();
 
   const star = [
