@@ -201,13 +201,18 @@ const OurProducts = () => {
   const [perPageCount, setPerPageCount] = useState(
     +localStorage.getItem("selectPageCount") || 6
   );
+  const { data } = useGetProductsQuery();
 
   const { data: productsData } = useGetProductsQuery({
-    limit: perPageCount ,
+    limit: perPageCount,
     skip: perPageCount * page,
   });
 
-  const { data } = useGetProductsQuery();
+  const viewAll = (pagesCount) => {
+    setPerPageCount(pagesCount);
+    setPage(0);
+  };
+
   const { data: productsDataByCategory } =
     useGetProductsByCategoryQuery(category);
   let navigate = useNavigate();
@@ -233,7 +238,7 @@ const OurProducts = () => {
     sessionStorage.setItem("pageCount", value);
   };
 
-  const totalCount = Math.ceil((data?.total / perPageCount)-1) || 1;
+  const totalCount = Math.ceil(data?.total / perPageCount - 1) || 1;
 
   const products = productsData?.products?.map((product, index) => (
     <div key={index} className="p-4 border rounded">
@@ -358,7 +363,7 @@ const OurProducts = () => {
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-3xl font-semibold">Our products.</h2>
         <button
-          onClick={() => setPerPageCount(200)}
+          onClick={() => viewAll(data?.total)}
           className="px-4 py-2 rounded border border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
         >
           View all ({data?.total})
