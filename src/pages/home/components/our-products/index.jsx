@@ -21,7 +21,7 @@ const OurProducts = () => {
   );
 
   const { data: productsData } = useGetProductsQuery({
-    limit: perPageCount ,
+    limit: perPageCount,
     skip: perPageCount * page,
   });
 
@@ -51,7 +51,7 @@ const OurProducts = () => {
     sessionStorage.setItem("pageCount", value);
   };
 
-  const totalCount = Math.ceil((data?.total / perPageCount)-1) || 1;
+  const totalCount = Math.ceil((data?.total / perPageCount) - 1) || 1;
 
   const products = productsData?.products?.map((product, index) => (
     <div key={index} className="p-4 border rounded">
@@ -163,7 +163,7 @@ const OurProducts = () => {
 
   const categories = categoryData?.map((el) => (
     <li
-      key={el.id}
+      key={el.slug}
       onClick={() => setCategory(el.slug)}
       className="p-2 text-nowrap border rounded cursor-pointer hover:bg-green-600 hover:text-white"
     >
@@ -172,7 +172,7 @@ const OurProducts = () => {
   ));
 
   return (
-    <div className="products w-full max-w-[1142px] px-4 mx-auto px-4">
+    <div className="products w-full max-w-[1142px] mx-auto px-4">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-3xl font-semibold">Our products.</h2>
         <button
@@ -182,7 +182,7 @@ const OurProducts = () => {
           View all ({data?.total})
         </button>
       </div>
-      <ul className="flex gap-4 overflow-x-scroll pb-4">
+      <ul className="product__list flex gap-4 overflow-x-scroll pb-2 mb-4">
         <li
           onClick={() => setCategory("")}
           className="p-2 border rounded cursor-pointer hover:bg-green-600 hover:text-white"
@@ -198,11 +198,12 @@ const OurProducts = () => {
         <Pagination
           onChange={handleChange}
           count={totalCount}
-          color="primary"
+          color="success"
           page={page}
         />
       </Box>
     </div>
+
   );
 };
 

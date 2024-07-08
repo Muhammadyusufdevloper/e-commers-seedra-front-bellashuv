@@ -7,21 +7,15 @@ import { BsFacebook } from "react-icons/bs";
 import { CgMenuRight } from "react-icons/cg";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { memo, useState } from "react";
-import { useGetProductsBySearchQuery } from "../../../context/api/productApi";
 import { useSelector } from "react-redux";
 import { CiSearch } from "react-icons/ci";
 import SearchModule from "./components/search/SearchModule";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
-  const [search, setSearch] = useState("");
-  const { data: products, isError } = useGetProductsBySearchQuery(search);
+  const [dropdownSearch, setDropdownSearch] = useState(false);
   const wishlistData = useSelector((state) => state.wishlistSlice.data);
   const cartData = useSelector((state) => state.cart.value);
-  function handleCloser() {
-    setSearch("");
-  }
-
   return (
     <>
       <header className="sticky top-0 left-0 bg-white shadow-md z-50 py-3">
@@ -58,25 +52,10 @@ const Header = () => {
                   <CiSearch className="text-xl" />
                 </button>
                 <input
-                  onChange={(e) => setSearch(e.target.value)}
                   type="search"
-                  value={search}
                   placeholder="Search"
                   className="flex-grow px-4 py-2 text-sm text-gray-700 border-none outline-none"
                 />
-                {products && search ? (
-                  <div className="absolute top-full left-0 w-full bg-white shadow-md mt-2 rounded-md overflow-hidden z-50">
-                    {!search ? (
-                      <p className="p-4 text-gray-700">No data</p>
-                    ) : (
-                      <SearchModule
-                        data={products}
-                        showList={search}
-                        handleCloser={handleCloser}
-                      />
-                    )}
-                  </div>
-                ) : null}
               </form>
             </div>
             <li className="p-4 border-b lg:border-none">
@@ -103,7 +82,7 @@ const Header = () => {
                 OUR BLOG
               </NavLink>
             </li>
-            <li className="p-4 border-b lg:border-none">
+            <li className="p-4 border-b lg:border-none ">
               <NavLink
                 to="/contact"
                 className="text-gray-700 hover:text-green-600"
@@ -129,6 +108,7 @@ const Header = () => {
             </div>
             <div className="hidden lg:block">
               <form
+                onClick={() => setDropdownSearch(p => !p)}
                 className={`relative flex items-center border border-gray-300 rounded-full overflow-hidden transition-all duration-500 ${menu
                   ? "fixed top-0 left-1/4 transform translate-y-20"
                   : "max-w-xs"
@@ -138,26 +118,14 @@ const Header = () => {
                   <CiSearch className="text-xl" />
                 </button>
                 <input
-                  onChange={(e) => setSearch(e.target.value)}
                   type="search"
-                  value={search}
                   placeholder="Search"
                   className="flex-grow px-4 py-2 text-sm text-gray-700 border-none outline-none"
                 />
-                {products && search ? (
-                  <div className="absolute top-full left-0 w-full bg-white shadow-md mt-2 rounded-md overflow-hidden z-50">
-                    {!search ? (
-                      <p className="p-4 text-gray-700">No data</p>
-                    ) : (
-                      <SearchModule
-                        data={products}
-                        search={search}
-                        handleCloser={handleCloser}
-                      />
-                    )}
-                  </div>
-                ) : null}
               </form>
+              {
+                dropdownSearch ? <SearchModule handleCloser={setDropdownSearch} /> : <></>
+              }
             </div>
             <div className="flex items-center gap-3">
               <Link to="/wishlist" className="relative">
