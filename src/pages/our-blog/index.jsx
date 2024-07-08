@@ -4,6 +4,7 @@ import { BLOGREAD } from "../../static";
 import { AiTwotoneClockCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import bgImage from "../../assets/images/components/blog/hero.png";
 
 const Blog = () => {
   const readData = BLOGREAD?.map((el) => (
@@ -31,14 +32,14 @@ const Blog = () => {
   }, []);
 
   return (
-    <section className="blog">
+    <section className="blog py-5 lg:py-20 w-full max-w-[1142px] px-4 mx-auto">
       <div
-        style={{ background: `url(../assets/components/blog/hero.png)` }}
-        className="blog__hero bg-cover bg-center bg-no-repeat h-96 flex items-center justify-center text-white"
+        style={{ backgroundImage: `url(${bgImage})` }}
+        className="blog__hero rounded-lg bg-cover bg-center bg-no-repeat h-96 flex items-center justify-center text-white"
       >
-        <div className="w-full max-w-[1142px] px-4 mx-auto px-4 text-center">
-          <h1 className="text-4xl font-semibold">Welcome to our blog</h1>
-          <p className="text-lg mt-4">
+        <div className="w-full max-w-[1142px] px-4 mx-auto px-4 text-center text-black">
+          <h1 className="text-4xl font-semibold ">Welcome to our blog</h1>
+          <p className="text-lg mt-4 ">
             Here you can find a lot of interesting and useful information that
             you need
             <br />

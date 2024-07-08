@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addWishlist } from "../../../../context/api/slice/wishlistSlice";
 import { add } from "../../../../context/slice/cartSlice";
 import defaultImg from "../../../../assets/images/default.png";
+import galochka from "../../../../assets/images/page/home/productImg/galochka.svg";
 import { useGetCategoryQuery } from "../../../../context/api/categoryApi";
 import {
   useGetProductsByCategoryQuery,
@@ -20,6 +21,7 @@ const OurProducts = () => {
     +localStorage.getItem("selectPageCount") || 6
   );
   const { data } = useGetProductsQuery();
+  const cartData = useSelector((state) => state.cart.value);
 
   const { data: productsData } = useGetProductsQuery({
     limit: perPageCount,
@@ -102,7 +104,11 @@ const OurProducts = () => {
             }}
             className="text-green-600"
           >
-            <FiShoppingCart className="w-6 h-6" />
+            {!cartData.some((el) => el.id === product.id) ? (
+              <FiShoppingCart className="w-6 h-6" />
+            ) : (
+              <img width={40} height={40} src={galochka} alt="" />
+            )}
           </button>
         </div>
       </div>
@@ -151,12 +157,16 @@ const OurProducts = () => {
             </h3>
             <button
               onClick={() => {
-                console.log("Adding to cart:", product);
+                
                 dispatch(add(product));
               }}
               className="text-green-600"
             >
-              <FiShoppingCart className="w-6 h-6" />
+              {!cartData.some((el) => el.id === product.id) ? (
+                <FiShoppingCart className="w-6 h-6" />
+              ) : (
+                <img width={40} height={40} src={galochka} alt="" />
+              )}
             </button>
           </div>
         </div>

@@ -18,13 +18,16 @@ import { useGetCategoryQuery } from "../../context/api/categoryApi";
 import { addWishlist } from "../../context/api/slice/wishlistSlice";
 import { add } from "../../context/slice/cartSlice";
 import { useState } from "react";
+import galochka from '../../assets/images/page/home/productImg/galochka.svg'
 
 const AllProduct = () => {
   let [sort, setSort] = useState("");
   let [search, setSearch] = useState("");
   let [category, setCategory] = useState("");
   let [limit, setLimit] = useState(6);
-  console.log(sort);
+  const cartData = useSelector((state) => state.cart.value);
+
+  
 
   const { data: productsData } = useGetProductsQuery({
     sortBy: "title",
@@ -58,7 +61,7 @@ const AllProduct = () => {
     return res;
   };
 
-  console.log(categoryData);
+
 
   const products = productsData?.products.map((product, index) => (
     <div
@@ -105,9 +108,13 @@ const AllProduct = () => {
               console.log("Adding to cart:", product);
               dispatch(add(product));
             }}
-            className="text-gray-700 p-2 rounded-md hover:bg-green-600 hover:text-white transition duration-300"
+            className="text-green-600"
           >
-            <FiShoppingCart className="text-xl" />
+            {!cartData.some((el) => el.id === product.id) ? (
+              <FiShoppingCart className="w-6 h-6" />
+            ) : (
+              <img width={40} height={40} src={galochka} alt="" />
+            )}
           </button>
         </div>
       </div>
@@ -156,12 +163,15 @@ const AllProduct = () => {
             </h3>
             <button
               onClick={() => {
-                console.log("Adding to cart:", product);
                 dispatch(add(product));
               }}
-              className="text-gray-700 p-2 rounded-md hover:bg-green-600 hover:text-white transition duration-300"
+              className="text-green-600"
             >
-              <FiShoppingCart className="text-xl" />
+              {!cartData.some((el) => el.id === product.id) ? (
+                <FiShoppingCart className="w-6 h-6" />
+              ) : (
+                <img width={40} height={40} src={galochka} alt="" />
+              )}
             </button>
           </div>
         </div>
@@ -213,9 +223,13 @@ const AllProduct = () => {
               console.log("Adding to cart:", product);
               dispatch(add(product));
             }}
-            className="text-gray-700 p-2 rounded-md hover:bg-green-600 hover:text-white transition duration-300"
+            className="text-green-600"
           >
-            <FiShoppingCart className="text-xl" />
+            {!cartData.some((el) => el.id === product.id) ? (
+              <FiShoppingCart className="w-6 h-6" />
+            ) : (
+              <img width={40} height={40} src={galochka} alt="" />
+            )}
           </button>
         </div>
       </div>
