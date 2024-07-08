@@ -1,4 +1,4 @@
-import { FaCheck } from "react-icons/fa";
+import { FaCheck, FaHeart, FaRegStar } from "react-icons/fa";
 import { GiEvilMoon } from "react-icons/gi";
 import { FaRegHeart } from "react-icons/fa";
 import Accordion from "@mui/material/Accordion";
@@ -13,21 +13,52 @@ import { useGetProductIdQuery } from "../../context/api/productApi";
 import avatarImg from "../../assets/images/components/avatar.svg";
 import tuvakImg from "../../assets/images/components/tuvak.svg";
 import OurProducts from "../home/components/our-products";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { add, remove } from "../../context/slice/cartSlice";
+import { addWishlist } from "../../context/api/slice/wishlistSlice";
 
 const SingleRout = () => {
   const { id } = useParams();
   const { data } = useGetProductIdQuery(id);
-  console.log(data);
+  const [count, setCount] = useState(0);
+  const [imageOrder, setImageOrder] = useState(0);
+  const cartData = useSelector((state) => state.cart.value);
+  let wishlistData = useSelector((state) => state.wishlistSlice.data) || [];
+  const dispatch = useDispatch();
 
   useEffect(() => {
     scroll(0, 0);
   }, [id]);
+
   return (
     <div className="w-full max-w-[1142px] px-4 mx-auto px-4ner py-10">
       <div className="single grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="single__imgs">
-          <img src={data?.images[0]} alt="" className="w-full object-cover" />
+        <div className="single__imgs flex flex-col justify-between">
+          <img
+            src={data?.images[imageOrder]}
+            alt=""
+            className="w-full object-cover"
+          />
+          <div className="flex items-center gap-[30px] overflow-auto w-full h-[150px]">
+            {data?.images?.map((image, index) => (
+              <div
+                onClick={() => setImageOrder(index)}
+                key={index}
+                className={`w-[80px] h-[80px] rounded-[17px] cursor-pointer ${
+                  imageOrder === index
+                    ? "border border-gray-300 bg-gray-300 rounded-[10px] cursor-no-drop"
+                    : " bg-[#a2d2c9]"
+                }`}
+              >
+                <img
+                  src={image}
+                  alt=""
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
         </div>
         <div className="single__info space-y-4">
           <h3 className="single__title text-2xl font-semibold text-gray-900">
@@ -38,28 +69,48 @@ const SingleRout = () => {
               <FaCheck /> AVAILABLE
             </button>
             <button className="single__category__btn flex items-center gap-2 text-green-500 bg-green-200/30 border border-green-200/30 rounded-full py-2 px-4">
-              <GiEvilMoon /> VEGETABLES
+              <GiEvilMoon /> {data?.category?.toUpperCase()}
             </button>
           </div>
           <div className="single__size flex items-center justify-between gap-4 flex-wrap">
             <div className="single__size__info">
               <span className="text-sm font-normal text-gray-500">Size</span>
-              <p className="text-sm font-normal text-gray-900">2 PACK</p>
+              <p className="text-sm font-normal text-gray-900">{count} PACK</p>
             </div>
             <div className="single__size__count flex items-center gap-4 text-green-500">
-              <button className="bg-transparent border-none text-lg">-</button>
-              <span className="py-2 px-4 bg-green-200/30 border-none">2</span>
-              <button className="bg-transparent border-none text-lg">+</button>
+              <button
+                disabled={count <= 0}
+                className="bg-transparent border-none text-lg"
+                onClick={() => setCount((p) => +p - 1)}
+              >
+                -
+              </button>
+              <span className="py-2 px-4 bg-green-200/30 border-none">
+                {count}
+              </span>
+              <button
+                onClick={() => setCount((p) => +p + 1)}
+                className="bg-transparent border-none text-lg"
+              >
+                +
+              </button>
             </div>
           </div>
           <div className="single__pack__rows flex flex-col gap-4 py-5">
             {[1, 2, 3, 4, 5].map((pack) => (
-              <div
+              <label
                 key={pack}
+                htmlFor={pack}
                 className="single__pack__row flex items-center justify-between gap-4 flex-wrap py-4 px-2 border border-gray-300 rounded-md"
               >
                 <div className="single__pack__left flex items-center gap-2">
-                  <input name="pack" type="radio" />
+                  <input
+                    value={+pack}
+                    onChange={(e) => setCount(e.target.value)}
+                    name="pack"
+                    id={pack}
+                    type="radio"
+                  />
                   <p className="text-sm font-normal text-gray-900">
                     {pack} pack
                   </p>
@@ -69,24 +120,48 @@ const SingleRout = () => {
                     start from
                   </span>
                   <h4 className="text-lg font-bold text-gray-900">
-                    ${data?.price * pack}
+                    ${(data?.price * pack)?.toFixed(2)}
                   </h4>
                 </div>
-              </div>
+              </label>
             ))}
           </div>
           <div className="single__total__price flex items-center justify-between gap-4 flex-wrap">
             <div className="single__total__price__left">
               <span className="block text-sm font-normal text-gray-500">
-                $15.56
+                <del>${data?.price + 5}</del>
               </span>
-              <h3 className="text-lg font-bold text-gray-900">$12.56</h3>
+              <h3 className="text-lg font-bold text-gray-900">
+                ${data?.price}
+              </h3>
             </div>
             <div className="single__total__price__right flex items-center gap-4">
-              <FaRegHeart className="text-green-500 text-xl" />
-              <button className="single__cart__btn bg-green-500 border border-green-500 text-white rounded-md py-3 px-4 transition hover:text-green-500 hover:bg-white">
-                Add to cart
-              </button>
+              {wishlistData.some((el) => el.id === data.id) ? (
+                <FaHeart
+                  onClick={() => dispatch(addWishlist(data))}
+                  className="text-green-500 text-xl"
+                />
+              ) : (
+                <FaRegHeart
+                  onClick={() => dispatch(addWishlist(data))}
+                  className="text-green-500 text-xl"
+                />
+              )}
+              {cartData.some((el) => el.id === data.id) ? (
+                <button
+                  onClick={() => dispatch(remove(data))}
+                  className="single__cart__btn bg-red-500 border border-red-500 text-white rounded-md py-3 px-4 transition hover:text-red-500 hover:bg-white"
+                >
+                  Remove from cart
+                </button>
+              ) : (
+                <button
+                  onClick={() => dispatch(add(data))}
+                  className="single__cart__btn bg-green-500 border border-green-500 text-white rounded-md py-3 px-4 transition hover:text-green-500 hover:bg-white"
+                >
+                  Add to cart
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -202,7 +277,10 @@ const SingleRout = () => {
           Customer reviews.
         </h3>
         <div className="review__wrapper grid grid-cols-1 md:grid-cols-[0.5fr,1.5fr] gap-5 py-5 items-start">
-          <div className="review__left bg-green-500 text-white p-5 rounded-md space-y-4">
+          <div
+            style={{ border: "0.3px solid gray" }}
+            className="review__left bg-white text-black p-5 rounded-md space-y-4"
+          >
             <h4 className="text-4xl font-bold">4.3</h4>
             <div className="review__ratings flex flex-col gap-4">
               {[4, 3, 2, 1, 0].map((rating) => (
