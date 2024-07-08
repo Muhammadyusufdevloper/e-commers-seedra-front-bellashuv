@@ -15,6 +15,7 @@ import HeaderCart from "./components/cart/HeaderCart";
 const Header = () => {
   const [menu, setMenu] = useState(false);
   const [dropdownSearch, setDropdownSearch] = useState(false);
+  const [showCart, setShowCart] = useState(false)
   const wishlistData = useSelector((state) => state.wishlistSlice.data);
   const cartData = useSelector((state) => state.cart.value);
   return (
