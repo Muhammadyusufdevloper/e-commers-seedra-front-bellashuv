@@ -1,11 +1,9 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   decreaseAmount,
   increaseAmount,
   removeAll,
 } from "../../../../../context/slice/cartSlice";
-import Empty from "../../../../../pages/cart/Empty";
 import cartImg from "../../../../../assets/images/page/cart/cart.webp";
 
 const HeaderCart = ({ setShowCart }) => {
@@ -56,23 +54,28 @@ const HeaderCart = ({ setShowCart }) => {
     </div>
   ));
   return (
-    <div
-      className="absolute top-4 right-0 w-[530px] h-[380px] bg-white shadow-lg rounded-lg z-50 overflow-y-auto"
-      onMouseEnter={() => setShowCart(true)}
-      onMouseLeave={() => setShowCart(false)}
-    >
-      <div className="flex flex-col gap-4 p-4">
-        {cartData.length > 0 ? cartItem : <Empty url={cartImg} />}
+    <>
+      <div className="absolute right-0 w-[530px] h-[30px] bg-[transparent]"></div>
+      <div
+        className="scroll-style absolute top-[30px] right-0 w-[530px] h-[380px] bg-white shadow-lg rounded-lg z-50 overflow-y-auto"
+        onMouseEnter={() => setShowCart(true)}
+        onMouseLeave={() => setShowCart(false)}
+      >
+        <div className="flex flex-col gap-4 p-4">
+          {cartData.length > 0 ? <div>
+            {cartItem}
+            <div className="py-2">
+              <button onClick={handelShop} className="py-2 px-5 bg-transparent ">
+                Clear
+              </button>
+              <button className="py-2 px-5 bg-green-700 rounded-lg text-white">
+                Proceed to payment
+              </button>
+            </div>
+          </div> : <img className="mx-auto" src={cartImg} width={250} height={250} />}
+        </div>
       </div>
-      <div className="py-2">
-        <button onClick={handelShop} className="py-2 px-5 bg-transparent ">
-          Clear
-        </button>
-        <button className="py-2 px-5 bg-green-700 rounded-lg text-white">
-          Proceed to payment
-        </button>
-      </div>
-    </div>
+    </>
   );
 };
 

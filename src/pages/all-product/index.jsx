@@ -228,15 +228,32 @@ const AllProduct = () => {
     <li
       key={el.id}
       onClick={() => setCategory(el.slug)}
-      className={`all-products__category__item cursor-pointer py-2 px-4 rounded-lg border transition duration-300 bg-green-600 text-white border-transparent text-nowrap`}
-    // onClick={() => handleCategoryClick(el)}
+      className={`all-products__category__item cursor-pointer py-2 px-4 rounded-lg border transition duration-500 bg-green-600 text-white border-transparent text-nowrap`}
     >
       {el.name}
     </li>
   ));
 
   return (
-    <div className="all-products container mx-auto">
+    <div className=" w-full max-w-[1142px] px-4 mx-auto mt-10">
+      <form className="flex justify-between items-center mb-8 gap-5">
+        <div className="blog__form-input w-full border rounded-full overflow-hidden">
+          <input
+            onChange={(e) => setSearch(e.target.value)}
+            value={search}
+            type="text"
+            placeholder="Search..."
+            className="w-full px-4 py-2 outline-none"
+          />
+        </div>
+        <select
+          onChange={(e) => setSort(e.target.value)}
+          className="px-4 py-2 border rounded-full outline-none"
+        >
+          <option value="asc">Sort by asc </option>
+          <option value="desc">Sort by desc</option>
+        </select>
+      </form>
       <div className="all-products__top__info flex items-center justify-between mb-6">
         <h2 className="text-3xl font-semibold">All products.</h2>
         <button
@@ -246,7 +263,7 @@ const AllProduct = () => {
           View all ({data?.total})
         </button>
       </div>
-      <ul className="all-products__category flex gap-4 overflow-x-auto pb-4">
+      <ul className="  product__list flex gap-4 overflow-x-auto pb-2 mb-5">
         <li
           onClick={() => setCategory("")}
           className={`all-products__category__item cursor-pointer py-2 px-4 rounded-lg border transition duration-300 ${"bg-green-600 text-white border-transparent"}`}
