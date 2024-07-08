@@ -31,7 +31,7 @@ const CustomerOpinion = () => {
 
   return (
     <section id="clients" className="py-20">
-      <div className="container mx-auto">
+      <div className="w-full max-w-[1142px] px-4 mx-auto">
         <h2 className="text-3xl font-semibold text-center mb-8">
           What our clients say
         </h2>

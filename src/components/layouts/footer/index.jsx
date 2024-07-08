@@ -6,7 +6,7 @@ import { memo } from "react";
 const Footer = () => {
   return (
     <footer className="py-5">
-      <div className="container mx-auto">
+      <div className="w-full max-w-[1142px] px-4 mx-auto">
         <div className="py-5 flex flex-wrap gap-7 items-center justify-between">
           <ul className="flex flex-wrap gap-2.5 items-center">
             <li className="px-2.5 py-1 text-sm font-medium text-green-600">ALL PRODUCTS</li>

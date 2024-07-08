@@ -4,7 +4,7 @@ import SeedraImg from "../../assets/images/page/home/ourBlog/girl.jpg";
 const SeedraInfo = () => {
   return (
     <Fragment>
-      <div className="container mx-auto flex flex-wrap items-center justify-between py-10">
+      <div className="w-full max-w-[1142px] px-4 mx-auto flex flex-wrap items-center justify-between py-10">
         <div className="w-full md:w-1/2">
           <h2 className="text-2xl md:text-4xl mb-4">
             Seedra helps to grow fast and efficient

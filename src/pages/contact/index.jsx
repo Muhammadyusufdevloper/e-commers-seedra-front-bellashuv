@@ -30,7 +30,7 @@ const Contact = () => {
 
   return (
     <Fragment>
-      <div className="contact container mx-auto mt-32 flex justify-between p-10 bg-cover bg-center rounded-lg pt-10 min-h-screen-60">
+      <div className="contact w-full max-w-[1142px] px-4 mx-auto mt-32 flex justify-between p-10 bg-cover bg-center rounded-lg pt-10 min-h-screen-60">
         <div className="contact__info w-1/2 flex flex-col justify-between p-8">
           <div className="contact__info__top">
             <h2 className="text-4xl">Contact us</h2>

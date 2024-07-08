@@ -156,14 +156,14 @@ const AllProduct = () => {
       key={el.id}
       onClick={() => setCategory(el.slug)}
       className={`all-products__category__item cursor-pointer py-2 px-4 rounded-lg border transition duration-300 bg-green-600 text-white border-transparent text-nowrap`}
-      // onClick={() => handleCategoryClick(el)}
+    // onClick={() => handleCategoryClick(el)}
     >
       {el.name}
     </li>
   ));
 
   return (
-    <div className="all-products container mx-auto">
+    <div className="all-products w-full max-w-[1142px] px-4 mx-auto">
       <div className="all-products__top__info flex items-center justify-between mb-6">
         <h2 className="text-3xl font-semibold">All products.</h2>
         <button className="py-2 px-4 border rounded-md text-green-600 border-green-600 hover:bg-green-600 hover:text-white transition duration-300">
@@ -174,7 +174,7 @@ const AllProduct = () => {
         <li
           onClick={() => setCategory("")}
           className={`all-products__category__item cursor-pointer py-2 px-4 rounded-lg border transition duration-300 ${"bg-green-600 text-white border-transparent"}`}
-          // onClick={() => handleCategoryClick(null)}
+        // onClick={() => handleCategoryClick(null)}
         >
           All
         </li>

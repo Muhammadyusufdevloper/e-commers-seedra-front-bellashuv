@@ -36,7 +36,7 @@ const Blog = () => {
         style={{ background: `url(../assets/components/blog/hero.png)` }}
         className="blog__hero bg-cover bg-center bg-no-repeat h-96 flex items-center justify-center text-white"
       >
-        <div className="container mx-auto px-4 text-center">
+        <div className="w-full max-w-[1142px] px-4 mx-auto px-4 text-center">
           <h1 className="text-4xl font-semibold">Welcome to our blog</h1>
           <p className="text-lg mt-4">
             Here you can find a lot of interesting and useful information that

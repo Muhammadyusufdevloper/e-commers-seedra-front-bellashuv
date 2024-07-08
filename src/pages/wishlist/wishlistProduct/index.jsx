@@ -59,7 +59,7 @@ const WishlistData = ({ data }) => {
   return (
     <>
       <section className="py-12">
-        <div className="container grid grid-cols-3 gap-6 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1">
+        <div className="w-full max-w-[1142px] px-4 mx-auto grid grid-cols-3 gap-6 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1">
           {products}
         </div>
       </section>

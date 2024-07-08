@@ -11,7 +11,7 @@ const Wishlist = () => {
       {data.length ? (
         <WishlistProduct data={data} />
       ) : (
-        <div className="container min-h-[calc(100vh-230px)] flex items-center justify-center">
+        <div className="w-full max-w-[1142px] px-4 min-h-[calc(100vh-230px)] flex items-center justify-center">
           <div className="relative">
             <img
               src={noteFoundImages}

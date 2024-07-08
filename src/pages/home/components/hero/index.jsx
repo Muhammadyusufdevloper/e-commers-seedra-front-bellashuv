@@ -4,8 +4,8 @@ import { memo } from "react";
 
 const Hero = () => {
   return (
-    <div className="hero py-5 lg:py-20 container mx-auto px-4">
-      <div className="hero__wrapper bg-cover bg-center lg:bg-no-repeat lg:flex lg:justify-between lg:items-center lg:gap-10 lg:px-10 lg:py-10 lg:rounded-lg lg:border lg:border-transparent lg:bg-hero">
+    <div className="hero py-5 lg:py-20 w-full max-w-[1142px] px-4 mx-auto">
+      <div className="hero__wrapper bg-hero bg-cover bg-center lg:bg-no-repeat lg:flex lg:justify-between lg:items-center lg:gap-10 lg:px-10 lg:py-10 lg:rounded-lg lg:border lg:border-transparent">
         <div className="hero__info max-w-3xl lg:max-w-none">
           <h2 className="hero__title text-4xl lg:text-6xl font-semibold text-gray-800 leading-tight pb-4">
             SEEDRA Basil Seeds for Indoor and Outdoor Planting

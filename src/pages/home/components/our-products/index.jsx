@@ -337,14 +337,14 @@ const OurProducts = () => {
   ));
 
   return (
-    <div className="products container mx-auto px-4">
+    <div className="products w-full max-w-[1142px] px-4 mx-auto px-4">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-3xl font-semibold">Our products.</h2>
         <button className="px-4 py-2 rounded border border-green-600 text-green-600 hover:bg-green-600 hover:text-white">
           View all (12)
         </button>
       </div>
-      <ul className="flex gap-4 overflow-x-scroll pb-4">
+      <ul className="flex gap-4 overflow-x-scroll pb-2 mb-4" style={{}}>
         <li onClick={()=>setCategory('')} className="p-2 border rounded cursor-pointer hover:bg-green-600 hover:text-white">
           All
         </li>
