@@ -23,7 +23,7 @@ const HeaderCart = ({ setShowCart }) => {
       key={el.id}
     >
       <div className="flex-none">
-        <img src={el.images[0]} alt="" className="w-24 h-full" />
+        <img src={el.images[0]} alt="" className="w-24 h-24 object-contain" />
       </div>
       <div className="flex flex-col gap-2 w-72">
         <p>{el.title}</p>
