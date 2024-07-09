@@ -32,7 +32,7 @@ const Header = () => {
             ></div>
           )}
           <ul
-            className={`fixed top-0 right-0 bg-white shadow-md h-full z-50 w-64 transform transition-transform duration-300 ${
+            className={`fixed top-0 right-0 bg-white shadow-md h-full z-50 w-[50%] transform transition-transform duration-300 ${
               menu ? "translate-x-0" : "translate-x-full"
             } lg:static lg:flex lg:flex-row lg:w-auto lg:h-auto lg:bg-transparent lg:shadow-none lg:translate-x-0`}
           >
