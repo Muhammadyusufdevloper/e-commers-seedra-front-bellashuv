@@ -5,7 +5,8 @@ import img3 from "../../assets/images/components/out/play.png";
 import img4 from "../../assets/images/components/out/viza.png";
 import { FiArrowLeft } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeAll } from "../../context/slice/cartSlice/index";
 
 const BOT_TOKEN = "7313879684:AAH0lhoKddXhkYP-YO5QnYueauqqT3J9hzE";
 const CHAT_ID = "-1002180292093";
@@ -17,6 +18,7 @@ const Payment = () => {
   const [expiryDate, setExpiryDate] = useState("");
   const [ccv, setCcv] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [sum, setSum] = useState(0);
   const cartData = useSelector((state) => state.cart.value);
 
@@ -40,7 +42,7 @@ const Payment = () => {
     api.send();
     navigate("/");
     alert("Muvaffaqiyatli to`lov qildingiz");
-
+    dispatch(removeAll());
     setCardNumber("");
     setExpiryDate("");
     setCcv("");
