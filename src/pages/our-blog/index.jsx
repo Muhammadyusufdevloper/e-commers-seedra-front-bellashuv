@@ -10,17 +10,16 @@ const Blog = () => {
   const readData = BLOGREAD?.map((el) => (
     <div
       key={el.id}
-      className="bg-gray-100 p-4 rounded-md flex items-start gap-4"
+      className="bg-gray-100 p-4 rounded-md flex flex-col gap-6 items-start  bg-no-repeat  bg-right-bottom min-h-[600px]"
+      style={{ backgroundImage: `url(${el.img})` }}
     >
       <div className="flex-shrink-0">
         <AiTwotoneClockCircle className="text-green-500 text-xl" />
+        <p>12.09.2021</p>
       </div>
       <div className="flex-1">
         <h3 className="text-lg font-semibold text-gray-900">{el.title}</h3>
         <p className="text-gray-700">{el.text}</p>
-      </div>
-      <div className="flex-shrink-0">
-        <img src={el.img} alt="" className="w-24 h-auto" />
       </div>
     </div>
   ));
@@ -63,7 +62,7 @@ const Blog = () => {
 
         <OurBlog />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10">
           <div className="bg-gray-100 rounded-lg overflow-hidden shadow-md flex items-center">
             <div className="p-4 flex flex-col gap-4">
               <div className="flex items-center gap-2">

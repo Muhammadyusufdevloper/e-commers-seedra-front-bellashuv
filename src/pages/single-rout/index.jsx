@@ -136,7 +136,7 @@ const SingleRout = () => {
               </h3>
             </div>
             <div className="single__total__price__right flex items-center gap-4">
-              {wishlistData.some((el) => el.id === data.id) ? (
+              {wishlistData?.some((el) => el?.id === data?.id) ? (
                 <FaHeart
                   onClick={() => dispatch(addWishlist(data))}
                   className="text-green-500 text-xl"
@@ -147,7 +147,7 @@ const SingleRout = () => {
                   className="text-green-500 text-xl"
                 />
               )}
-              {cartData.some((el) => el.id === data.id) ? (
+              {cartData?.some((el) => el?.id === data?.id) ? (
                 <button
                   onClick={() => dispatch(remove(data))}
                   className="single__cart__btn bg-red-500 border border-red-500 text-white rounded-md py-3 px-4 transition hover:text-red-500 hover:bg-white"

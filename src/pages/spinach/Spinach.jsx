@@ -5,12 +5,16 @@ import { useEffect } from "react";
 
 function Spinach() {
   const spinachData = SPINACH?.map((el) => (
-    <div key={el.id} style={{ backgroundColor: el.bg }} className="rounded-lg">
-      <div className="p-2.5">
+    <div
+      key={el.id}
+      style={{ backgroundColor: el.bg }}
+      className="rounded-lg max-h-[700px] flex flex-col justify-between overflow-hidden"
+    >
+      <div className="p-2.5 flex flex-col gap-[50px]">
         <span className="text-sm text-gray-500">{el.time}</span>
         <h3 className="text-xl font-semibold text-gray-900">{el.title}</h3>
         <p className="text-sm text-gray-500">{el.text}</p>
-        <button className="px-5 py-2.5 bg-white text-green-600 border-transparent rounded">
+        <button className="px-5 py-2.5 bg-white text-green-600 border-transparent rounded max-w-[110px]">
           Read
         </button>
       </div>
@@ -25,11 +29,14 @@ function Spinach() {
   }, []);
 
   return (
-    <section className="w-full max-w-[1142px] px-4 mt-10">
+    <section className="w-full max-w-[1142px] px-4 mx-auto mt-10">
       <div className="flex items-center justify-between bg-gray-200 rounded-lg p-5 flex-col sm:flex-row">
         <div className="w-full sm:w-1/2 text-center sm:text-left">
-          <h1 className="font-lexend text-4xl sm:text-3xl md:text-2xl lg:text-xl font-semibold text-gray-900">
-            How to plant spinach correctly in winter
+          <h1
+            style={{ fontSize: 50 }}
+            className="font-lexend flex flex-col gap-6  text-4xl sm:text-3xl md:text-2xl lg:text-xl font-semibold text-gray-900"
+          >
+            <span>How to plant spinach</span> <span>correctly in winter</span>
           </h1>
         </div>
         <div className="w-full sm:w-1/2">
@@ -94,7 +101,7 @@ function Spinach() {
             grass-like seedlings will emerge.
           </p>
         </div>
-        <div className="flex flex-col gap-3.5">{spinachData}</div>
+        <div className="flex flex-col gap-8">{spinachData}</div>
       </div>
     </section>
   );
