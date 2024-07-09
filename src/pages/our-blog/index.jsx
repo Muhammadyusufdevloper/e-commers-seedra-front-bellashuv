@@ -36,7 +36,7 @@ const Blog = () => {
         style={{ backgroundImage: `url(${bgImage})` }}
         className="blog__hero rounded-lg bg-cover bg-center bg-no-repeat h-96 flex items-center justify-center text-white"
       >
-        <div className="w-full max-w-[1142px] px-4 mx-auto px-4 text-center text-black">
+        <div className="w-full max-w-[1142px] mx-auto px-4 text-center text-black">
           <h1 className="text-4xl font-semibold ">Welcome to our blog</h1>
           <p className="text-lg mt-4 ">
             Here you can find a lot of interesting and useful information that

@@ -24,3 +24,7 @@ body::-webkit-scrollbar-thumb {
   background-color: #22c55e;
   border-radius: 8px;
 }
+
+input{
+  outline: none !important;
+}

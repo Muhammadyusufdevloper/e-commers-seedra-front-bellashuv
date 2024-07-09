@@ -10,10 +10,11 @@ import NoteFound from "./pages/note-found";
 import Blog from "./pages/our-blog";
 import Chekout from "./pages/chekout/Chekout";
 import Cart from "./pages/cart";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Spinach from "./pages/spinach/Spinach";
 import AllProduct from "./pages/all-product";
+import Payment from "./pages/payment/Payment";
 const App = () => {
   const [menu, setMenu] = useState(true);
   return (
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="contact" element={<Contact />} />
           <Route path="chekout" element={<Chekout />} />
+          <Route path="payment" element={<Payment />} />
           <Route path="cart" element={<Cart />} />
           <Route path="spinach" element={<Spinach />} />
           <Route path="all-product" element={<AllProduct />} />
