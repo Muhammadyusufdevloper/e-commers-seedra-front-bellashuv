@@ -1,6 +1,6 @@
-import React, { memo, useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { IoCloseCircle } from "react-icons/io5";
-import { decreaseAmount, increaseAmount, remove, removeAll } from "../../context/slice/cartSlice";
+import { decreaseAmount, increaseAmount, remove } from "../../context/slice/cartSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
