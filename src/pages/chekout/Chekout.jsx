@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiArrowLeft } from "react-icons/fi";
+import { useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const BOT_TOKEN = "7313879684:AAH0lhoKddXhkYP-YO5QnYueauqqT3J9hzE";
@@ -14,6 +15,13 @@ function Checkout() {
   const [address, setAddress] = useState("");
   const [zip, setZip] = useState("");
   const navigate = useNavigate();
+  const [sum, setSum] = useState(0);
+  const cartData = useSelector((state) => state.cart.value);
+
+  useEffect(() => {
+    const total = cartData?.reduce((acc, el) => acc + el.price * el.amount, 0);
+    setSum(Math.ceil(total));
+  }, [cartData]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,12 +33,13 @@ function Checkout() {
     text += `City: ${city} %0A`;
     text += `Address: ${address} %0A`;
     text += `ZIP Code: ${zip} %0A`;
-    text += `Total Amount: $12.56 %0A`;
+    text += `Total Amount: $${sum} %0A`;
 
     let url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text}`;
     let api = new XMLHttpRequest();
     api.open("GET", url, true);
     api.send();
+    navigate("/payment");
 
     setName("");
     setPhone("");
@@ -147,7 +156,7 @@ function Checkout() {
                 Planting
               </p>
               <h3 className="chekout__left__count__title-price text-lg font-semibold text-gray-800">
-                $12.56
+                ${sum}
               </h3>
               {/* Repeat items as necessary */}
               <div className="chekout__left__count__total flex items-center justify-between mt-4">
@@ -155,7 +164,7 @@ function Checkout() {
                   Total amount
                 </p>
                 <h3 className="chekout__left__count__title-price text-lg font-semibold text-gray-800">
-                  $12.56
+                  ${sum}
                 </h3>
               </div>
             </div>
